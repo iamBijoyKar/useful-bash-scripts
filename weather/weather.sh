@@ -42,10 +42,26 @@ get_current_weather() {
         echo "The visibility in $CITY is $VISIBILITY km"
         echo "The cloud cover in $CITY is $CLOUD%"
         echo 
+    else
+        echo "Invalid flag. Please use -m for more detailed weather information"
+        exit 0
     fi
 
 }
 
+if [ $# -eq 0 ]; then
+    echo "Please provide a city name or --help for more information"
+    exit 1
+fi
+
+if [ ${CITY,,} == "--help"]; then
+    echo "Usage: weather [city] [flag]"
+    echo "city: The name of the city to get the weather for"
+    echo "flag: -m for more detailed weather information"
+    exit 0
+fi
+
+# Call the function with the API key and the city name
 get_current_weather $KEY $CITY
 
 
