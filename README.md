@@ -53,6 +53,7 @@ It feels like 59.2 degrees Fahrenheit
     +@@@@@@@@@@@@*
      .::::::::::.
 ```
+View the [README](/weather/README.md) for more information.
 
 ## Contributing
 
