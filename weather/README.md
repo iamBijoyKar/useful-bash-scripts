@@ -23,6 +23,10 @@
     ```
 
 4. Get a free API key from [weatherapi.com](https://www.weatherapi.com/) by signing up for an account.
+5. Put the API key in the `.env` file in the same directory as the script, like this:
+    ```
+    KEY=your_api_key_here
+    ```
 
 ## Usage
 To check the weather for a specific location, simply run the script followed by the desired location as an argument. For example:
@@ -30,6 +34,23 @@ To check the weather for a specific location, simply run the script followed by 
 ./weather.sh "New York"
 ```
 This will display the weather forecast for New York.
+```bash
+bijoy@BijoyKarPC:/mnt/h/bash-shell/useful-bash-scripts/weather$ ./weather.sh "New York" -m
+The temperature in New is 28.3 degrees Celsius
+The temperature in New is 82.9 degrees Fahrenheit
+The weather in New is Sunny
+It feels like 33.6 degrees Celsius
+It feels like 92.5 degrees Fahrenheit
+
+
+       : .. :
+     :.:-==-:.:
+     :.+%%%%+.:.
+    .:.+%%%%+.:.
+     :.:-==-:.:
+       : .. :
+
+```
 
 ## Options
 - `-m` flag: Display more detailed weather information, including humidity, wind speed, and visibility.
