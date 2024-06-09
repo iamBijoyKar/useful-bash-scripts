@@ -8,7 +8,10 @@ CITY=$1
 FLAG=$2
 
 get_current_weather() {
-    URL="https://api.weatherapi.com/v1/current.json?key=$1&q=$2"
+    # *The function takes in two arguments, the API key and the city name
+    KEY=$1
+    CITY=$2
+    URL="https://api.weatherapi.com/v1/current.json?key=$KEY&q=$CITY"
     FORECAST=$(curl -s $URL)
     TEMP_C=$(echo $FORECAST | jq -r -C '.current.temp_c')
     TEMP_F=$(echo $FORECAST | jq -r '.current.temp_f')
@@ -17,9 +20,9 @@ get_current_weather() {
     FELT_TEMP_F=$(echo $FORECAST | jq -r '.current.feelslike_f')
     ICON=$(echo $FORECAST | jq -r '.current.condition.icon')
 
-    echo "The temperature in $2 is $TEMP_C degrees Celsius"
-    echo "The temperature in $2 is $TEMP_F degrees Fahrenheit"
-    echo "The weather in $2 is $CONDITION"
+    echo "The temperature in $CITY is $TEMP_C degrees Celsius"
+    echo "The temperature in $CITY is $TEMP_F degrees Fahrenheit"
+    echo "The weather in $CITY is $CONDITION"
     echo "It feels like $FELT_TEMP_C degrees Celsius"
     echo "It feels like $FELT_TEMP_F degrees Fahrenheit"
     ascii-image-converter https:$ICON -W 20 -C
@@ -32,12 +35,12 @@ get_current_weather() {
         PRESSURE=$(echo $FORECAST | jq -r '.current.pressure_mb')
         VISIBILITY=$(echo $FORECAST | jq -r '.current.vis_km')
         CLOUD=$(echo $FORECAST | jq -r '.current.cloud')
-        echo "The humidity in $2 is $HUMIDITY%"
-        echo "The wind speed in $2 is $WIND km/h"
-        echo "The UV index in $2 is $UV"
-        echo "The pressure in $2 is $PRESSURE mb"
-        echo "The visibility in $2 is $VISIBILITY km"
-        echo "The cloud cover in $2 is $CLOUD%"
+        echo "The humidity in $CITY is $HUMIDITY%"
+        echo "The wind speed in $CITY is $WIND km/h"
+        echo "The UV index in $CITY is $UV"
+        echo "The pressure in $CITY is $PRESSURE mb"
+        echo "The visibility in $CITY is $VISIBILITY km"
+        echo "The cloud cover in $CITY is $CLOUD%"
         echo 
     fi
 
