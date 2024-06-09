@@ -28,7 +28,7 @@ get_current_weather() {
     ascii-image-converter https:$ICON -W 20 -C
 
     # If the flag is -m, then display the weather in a more detailed format
-    if [ ${FLAG,,} == "-m" ]; then
+    if [ "${FLAG,,}" == "-m" ]; then
         HUMIDITY=$(echo $FORECAST | jq -r '.current.humidity')
         WIND=$(echo $FORECAST | jq -r '.current.wind_kph')
         UV=$(echo $FORECAST | jq -r '.current.uv')
@@ -42,9 +42,6 @@ get_current_weather() {
         echo "The visibility in $CITY is $VISIBILITY km"
         echo "The cloud cover in $CITY is $CLOUD%"
         echo 
-    else
-        echo "Invalid flag. Please use -m for more detailed weather information"
-        exit 0
     fi
 
 }
@@ -54,7 +51,7 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-if [ ${CITY,,} == "--help"]; then
+if [ "${CITY,,}" == "--help" ]; then
     echo "Usage: weather [city] [flag]"
     echo "city: The name of the city to get the weather for"
     echo "flag: -m for more detailed weather information"
